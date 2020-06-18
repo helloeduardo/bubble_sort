@@ -2,21 +2,24 @@ def bubble_sort(array)
   n = array.count
   is_sorted = false
 
-  while (!is_sorted) do
+  until is_sorted do
     is_sorted = true
+    last_element_index = n - 1
     #one loop through the whole array n-1 times
-    (n - 1).times do |i|
+    last_element_index.times do |i|
       if array[i] > array [i + 1]
+        #swap elements
         array[i], array[i + 1] = array[i + 1], array[i]
         is_sorted = false
       end
     end
+    last_element_index -= 1
   end
 
   array
 end
 
-
-test = [4,3,78,2,0,2]
-p test
-p bubble_sort(test)
+p "Enter a list of numbers to be sorted (separated by spaces)"
+input = gets.chomp.split.map { |i| i.to_i  }
+p "Your unsorted array is: #{input}"
+p "Your sorted array is: #{bubble_sort(input)}"
